@@ -1,11 +1,11 @@
 pipeline {
     environment {
-        registry = "mmiotkug/jenkins-docker-test"
+        registry = "rudnik04/jenkins-docker-test"
         DOCKERHUB_CREDENTIALS = credentials('docker-login-pwd')
     }
     agent {
         docker {
-            image 'mmiotkug/node-curl'
+            image 'rudnik04/node-curl'
             args '-p 3000:3000'
             args '-w /app'
             args '-v /var/run/docker.sock:/var/run/docker.sock'
@@ -28,7 +28,7 @@ pipeline {
         stage("Build & Push Docker image") {
             steps {
                 sh 'docker image build -t $registry:$BUILD_NUMBER .'
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u mmiotkug --password-stdin'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u rudnik04 --password-stdin'
                 sh 'docker image push $registry:$BUILD_NUMBER'
                 sh "docker image rm $registry:$BUILD_NUMBER"
             }
