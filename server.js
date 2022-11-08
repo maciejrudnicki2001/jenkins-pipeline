@@ -23,3 +23,7 @@ app.get('/hobbies/:id', async (req, res) => {
     }
     res.send();
 })
+
+app.get('/hobbies/count', async (req, res) => {
+    res.send(hobbies.getHowManyHobbies());
+});

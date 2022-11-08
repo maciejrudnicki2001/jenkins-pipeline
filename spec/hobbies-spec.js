@@ -9,4 +9,16 @@ describe("API unit test suite", () => {
             expect(list[0]).toBe("jogging");
         });
     })
+    describe("getHobbiesLength", () => {
+        const length = hobbies.getHowManyHobbies();
+        it("returns 5 hobbies", () => {
+            expect(length).toEqual(5);
+        });
+    })
+    describe("getTheShortestHobby", () => {
+        const shortestHobby = hobbies.getTheShortestHobby();
+        it("returns 'diving' as the shortest hobby", () => {
+            expect(shortestHobby).toBe("diving");
+        });
+    })
 })

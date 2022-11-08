@@ -9,3 +9,16 @@ exports.getHobby = id => {
         return null;
     return hobbies[id-1];
 }
+
+exports.getHowManyHobbies = () => {
+    return hobbies.length;
+}
+
+exports.getTheShortestHobby = () => {
+    let shortestHobby = hobbies[0];
+    hobbies.forEach(hobby => {
+        if(hobby.length < shortestHobby.length)
+            shortestHobby = hobby;
+    });
+    return shortestHobby;
+}
